@@ -9,15 +9,12 @@ st.set_page_config(
     layout="centered",
     initial_sidebar_state="auto",
     menu_items={
-        'Get Help': 'https://www.example.com/help',
-        'Report a bug': 'https://www.example.com/bug',
+
         'About': "# Cette application estime le risque d'AVC basé sur vos données de santé."
     }
 )
 
-# Ajout du logo
 
-# Chargement du modèle entraîné avec mise en cache
 @st.cache_resource
 def load_model():
     return joblib.load('best_avc_model.pkl')
@@ -79,7 +76,7 @@ if st.button('Estimer le Risque d\'AVC AI'):
             risk_category = "Élevé"
             risk_color = "🔴"
         
-        # Affichage du risque avec stylisation
+        # Affichage du risque 
         st.markdown(
             f"<h2 style='color:{risk_color}; font-size: 36px;'>{risk_icon} Le risque prédit d'AVC AI est de {risk:.2f}% ({risk_category})</h2>",
             unsafe_allow_html=True
